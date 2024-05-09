@@ -11,9 +11,16 @@ class Estudiante extends Model
 
     protected $table = 'estudiante';
 
-    protected $primaryKey = 'Boleta_Estudiante';
+    protected $primaryKey = 'id_estudiante';
 
-    protected $fillable = ['Nombre_Estudiante', 'App_Estudiante', 'Apm_Estudiante', 'Correo_Estudiante'];
+    protected $keyType = 'string';
+
+    protected $fillable = ['nombre', 'apellido', 'correo', 'id_trabajoAcademico'];
 
     public $timestamps = false;
+
+    public function trabajoAcademico()
+    {
+        return $this->belongsTo(TrabajoAcademico::class);
+    }
 }

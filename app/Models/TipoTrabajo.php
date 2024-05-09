@@ -11,9 +11,11 @@ class TipoTrabajo extends Model
 
     protected $table = 'tipotrabajo';
 
-    protected $primaryKey = 'idtipoTrabajo';
+    protected $primaryKey = 'id_tipoTrabajo';
 
-    protected $fillable = ['Descripcion'];
+    protected $keyType = 'string';
+
+    protected $fillable = ['descripcion'];
 
     public $timestamps = false;
 }

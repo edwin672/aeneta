@@ -11,9 +11,11 @@ class Area extends Model
 
     protected $table = 'area';
 
-    protected $primaryKey = 'idArea';
+    protected $primaryKey = 'id_area';
 
-    protected $fillable = ['Descripcion'];
+    protected $keyType = 'string';
+
+    protected $fillable = ['descripcion'];
 
     public $timestamps = false;
 }

@@ -9,11 +9,13 @@ class Departamento extends Model
 {
     use HasFactory;
 
-    protected $table = 'trabajo_academico';
+    protected $table = 'departamento';
 
-    protected $primaryKey = 'id_Departamento';
+    protected $primaryKey = 'id_departamento';
 
-    protected $fillable = ['Descripcion'];
+    protected $keyType = 'string';
+
+    protected $fillable = ['descripcion'];
 
     public $timestamps = false;
 }

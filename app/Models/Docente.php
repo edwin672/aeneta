@@ -11,9 +11,21 @@ class Docente extends Model
 
     protected $table = 'docente';
 
-    protected $primaryKey = 'ID_Docente';
+    protected $primaryKey = 'id_docente';
 
-    protected $fillable = ['Nombre_Docente', 'App_Docente', 'Apm_Docente', 'Correo_Docente', 'Id_departamento'];
+    protected $keyType = 'string';
+
+    protected $fillable = ['nombre', 'apellido', 'correo', 'id_departamento'];
 
     public $timestamps = false;
+
+    public function trabajoAcademicoDirectores()
+    {
+        return $this->belongsToMany(TrabajoAcademico::class);
+    }
+
+    public function trabajoAcademicoSinodales()
+    {
+        return $this->belongsToMany(TrabajoAcademico::class);
+    }
 }
