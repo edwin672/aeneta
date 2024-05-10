@@ -11,4 +11,9 @@ class TrabajoAcademicoController extends Controller
     {
         return view('postulations.create');
     }
+
+    public function index()
+    {
+        return "HOLA";
+    }
 }

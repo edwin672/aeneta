@@ -21,11 +21,11 @@ class Docente extends Model
 
     public function trabajoAcademicoDirectores()
     {
-        return $this->belongsToMany(TrabajoAcademico::class);
+        return $this->belongsToMany(TrabajoAcademico::class, 'director_trabajoacademico', 'id_docente', 'id_trabajoAcademico');
     }
 
     public function trabajoAcademicoSinodales()
     {
-        return $this->belongsToMany(TrabajoAcademico::class);
+        return $this->belongsToMany(TrabajoAcademico::class, 'sinodal_trabajoacademico', 'id_docente', 'id_trabajoAcademico');
     }
 }
