@@ -16,4 +16,9 @@ class TrabajoAcademicoController extends Controller
     {
         return "HOLA";
     }
+    public function SubirTrabajo()
+    {
+        return view('subirTrabajo');
+    }
+    
 }
