@@ -32,4 +32,6 @@ Route::post('/upload-pdf', [PdfDocumentController::class, 'store'])->name('pdf.u
 
 Route::get('/pdf/{id}/preview', [PdfDocumentController::class, 'showPdfPreview'])->name('pdf.preview');
 Route::get('/pdf/{id}/show', [PdfDocumentController::class, 'showPdf'])->name('pdf.show');
+
+
 require __DIR__ . '/auth.php';

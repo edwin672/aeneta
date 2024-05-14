@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PdfDocument;
+use Illuminate\Support\Facades\DB;
 
 class PdfDocumentController extends Controller
 {
@@ -18,9 +19,15 @@ class PdfDocumentController extends Controller
         $pdfContent = file_get_contents($request->file('pdf_file')->getRealPath());
 
         // Guardar en la base de datos
-        PdfDocument::create([
-            'title' => $request->input('title'),
-            'pdf_content' => $pdfContent,
+       
+        DB::table('trabajoacademico')->insert([
+            'id_tipoTrabajo' => $request->input('tipoTrabajoAcademico'),
+            'titulo' => $request->input('titulo'),
+            'descripcion' => $request->input('descripcion'),
+            'fecha_inicio' => $request->input('fechaInicio'),
+            'fecha_final' => $request->input('fechaFinal'),
+            'id_area' => $request->input('area'),
+            'contenido' => $pdfContent,
         ]);
 
         return redirect()->back()->with('success', 'PDF subido correctamente.');
@@ -34,7 +41,7 @@ class PdfDocumentController extends Controller
     public function showPdfPreview($id)
     {
         // Buscar el documento PDF por su ID
-        $pdfDocument = PdfDocument::find($id);
+        $pdfDocument = DB::table('trabajoacademico')->where('id_trabajoAcademico', $id)->value('contenido');
 
         // Verificar si se encontró el documento
         if (!$pdfDocument) {
@@ -48,7 +55,7 @@ class PdfDocumentController extends Controller
     public function showPdf($id)
 {
     // Buscar el documento PDF por su ID
-    $pdfDocument = PdfDocument::find($id);
+    $pdfDocument = DB::table('trabajoacademico')->where('id_trabajoAcademico', $id)->value('contenido');
 
     // Verificar si se encontró el documento
     if (!$pdfDocument) {
@@ -60,7 +67,7 @@ class PdfDocumentController extends Controller
         echo $pdfDocument->pdf_content;
     }, 200, [
         'Content-Type' => 'application/pdf',
-        'Content-Disposition' => 'inline; filename="' . $pdfDocument->title . '.pdf"',
+        'Content-Disposition' => 'inline; filename="' . $pdfDocument->titulo . '.pdf"',
     ]);
 }
 }
