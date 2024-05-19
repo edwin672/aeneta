@@ -124,7 +124,13 @@ class PdfDocumentController extends Controller
             'id_area' => $request->input('area'),
             'contenido' => $pdfContent,
         ]);
-
+        $trabajoId = DB::getPdo()->lastInsertId();
+        $participantes = $request->input('integrantes', []);
+        foreach ($participantes as $participante) {
+            DB::table('estudiante')
+            ->where('id_estudiante', $participante)
+            ->update(['id_trabajoAcademico' => $trabajoId]);
+        }
         return redirect()->back()->with('success', 'PDF subido correctamente.');
     }
 }
