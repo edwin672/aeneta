@@ -7,28 +7,39 @@
     <script>
         function addSinodal() {
             const sinodalesContainer = document.getElementById('sinodalesContainer');
-            const newSinodalDiv = document.createElement('div');
-            newSinodalDiv.className = 'sinodal-field';
-            newSinodalDiv.innerHTML = `
-                <input type="text" name="sinodales[]" placeholder="Boleta del Sinodal de Trabajo terminal">
-                <button type="button" onclick="removeSinodal(this)">Eliminar</button>
-            `;
-            sinodalesContainer.appendChild(newSinodalDiv);
+            const sinodalesCount = sinodalesContainer.getElementsByClassName('sinodal-field').length;
+            if (sinodalesCount < 3) {
+                const newSinodalDiv = document.createElement('div');
+                newSinodalDiv.className = 'sinodal-field';
+                newSinodalDiv.innerHTML = `
+                    <input type="text" name="sinodales[]" placeholder="Boleta del Sinodal de Trabajo terminal">
+                    <button type="button" onclick="removeSinodal(this)">Eliminar</button>
+                `;
+                sinodalesContainer.appendChild(newSinodalDiv);
+            } else {
+                alert('Solo puedes agregar hasta 3 sinodales.');
+            }
         }
 
         function removeSinodal(button) {
             const sinodalDiv = button.parentNode;
             sinodalDiv.parentNode.removeChild(sinodalDiv);
         }
+
         function addIntegrante() {
             const integrantesContainer = document.getElementById('integrantesContainer');
-            const newIntegranteDiv = document.createElement('div');
-            newIntegranteDiv.className = 'integrante-field';
-            newIntegranteDiv.innerHTML = `
-                <input type="text" name="integrantes[]" placeholder="Boleta del Integrante de Trabajo terminal">
-                <button type="button" onclick="removeIntegrante(this)">Eliminar</button>
-            `;
-            integrantesContainer.appendChild(newIntegranteDiv);
+            const integrantesCount = integrantesContainer.getElementsByClassName('integrante-field').length;
+            if (integrantesCount < 5) {
+                const newIntegranteDiv = document.createElement('div');
+                newIntegranteDiv.className = 'integrante-field';
+                newIntegranteDiv.innerHTML = `
+                    <input type="text" name="integrantes[]" placeholder="Boleta del Integrante de Trabajo terminal">
+                    <button type="button" onclick="removeIntegrante(this)">Eliminar</button>
+                `;
+                integrantesContainer.appendChild(newIntegranteDiv);
+            } else {
+                alert('Solo puedes agregar hasta 5 integrantes.');
+            }
         }
 
         function removeIntegrante(button) { 
@@ -63,6 +74,3 @@
     </form>
 </body>
 </html>
-
-
-

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrabajoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfDocumentController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,5 +35,13 @@ Route::post('/RegistrarTrabajo', [PdfDocumentController::class, 'registrarTrabaj
 
 Route::get('/pdf/{id}/preview', [PdfDocumentController::class, 'showPdfPreview'])->name('pdf.preview');
 Route::get('/pdf/{id}/show', [PdfDocumentController::class, 'showPdf'])->name('pdf.show');
+
+#ruta de vista del administrador
+Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/agregarSinodal',[AdminController::class, 'agregarSinodal'])->name('admin.agregarSinodal');
+Route::post('/admin/addSinodales', [AdminController::class, 'addSinodales'])->name('admin.addSinodales');
+
+Route::get('/admin/ttDetails/{id}', [AdminController::class, 'ttDetails'])->name('admin.ttDetails');
+
 
 require __DIR__ . '/auth.php';
