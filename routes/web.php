@@ -5,6 +5,7 @@ use App\Http\Controllers\TrabajoAcademicoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfDocumentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstudianteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,8 +34,8 @@ Route::post('/SubirTerminado', [PdfDocumentController::class, 'SubirTerminado'])
 Route::get('/RegistrarTrabajo', [PdfDocumentController::class, 'registrarTrabajoForm'])->name('trabajo.registrarTrabajoForm');
 Route::post('/RegistrarTrabajo', [PdfDocumentController::class, 'registrarTrabajo'])->name('RegistrarTrabajo');
 
-Route::get('/pdf/{id}/preview', [PdfDocumentController::class, 'showPdfPreview'])->name('pdf.preview');
-Route::get('/pdf/{id}/show', [PdfDocumentController::class, 'showPdf'])->name('pdf.show');
+Route::get('/pdf/{id}/preview', [PdfDocumentController::class, 'showPdfPreview'])->name('pdf.preview'); #vista para mostrar el menu con el pdf
+Route::get('/pdf/{id}/show', [PdfDocumentController::class, 'showPdf'])->name('pdf.show'); #muestra todo el pdf
 
 #ruta de vista del administrador
 Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
@@ -43,5 +44,8 @@ Route::post('/admin/addSinodales', [AdminController::class, 'addSinodales'])->na
 
 Route::get('/admin/ttDetails/{id}', [AdminController::class, 'ttDetails'])->name('admin.ttDetails');
 
+Route::get('/estudiante', [EstudianteController::class, 'index'])->name('estudiante.index');
+
+Route::get('/consultarTrabajos', [EstudianteController::class, 'consultarTrabajos'])->name('estudiante.consultarTrabajos');
 
 require __DIR__ . '/auth.php';
