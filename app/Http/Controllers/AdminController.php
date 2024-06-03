@@ -35,6 +35,10 @@ class AdminController extends Controller
                     'id_sinodal' => $sinodal,
                     'id_trabajoAcademico' => $ttId,
                 ]);
+                #cambiar el status del trabajo academico
+                DB::table('trabajoacademico')
+                    ->where('id_trabajoAcademico', $ttId)
+                    ->update(['estatus' => 'Sinodales asignados']);
             } catch (\Exception $e) {
                 // Manejar errores de inserción, por ejemplo, claves foráneas no válidas
                 return redirect()->back()->with('error', 'Error al agregar sinodales: ' . $e->getMessage());

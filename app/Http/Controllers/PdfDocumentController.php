@@ -123,6 +123,7 @@ class PdfDocumentController extends Controller
             'fecha_inicio' => $request->input('fechaInicio'),
             'id_area' => $request->input('area'),
             'contenido' => $pdfContent,
+            'estatus' => 'En proceso de registro',
         ]);
         $trabajoId = DB::getPdo()->lastInsertId();
         $participantes = $request->input('integrantes', []);
