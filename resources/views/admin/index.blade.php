@@ -12,6 +12,7 @@
             <div class="col-md-12 text-center">
                 <h1>Panel de Administración</h1>
                 <button class="btn btn-primary mt-4" onclick="window.location.href='{{ route('admin.agregarSinodal') }}'">Agregar Sinodales</button>
+                <button class="btn btn-primary mt-4" onclick="window.location.href='{{ route('admin.agregarDirector') }}'">Agregar Directores</button>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
 <body>
     <div class="container mt-5">
         <h1>Agregar Sinodal</h1>
-        <form action="{{ route('admin.addSinodales') }}" method="POST">
+        <form action="{{ route('admin.addSinodales') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="tt">Selecciona un Trabajo Terminal:</label>
@@ -48,6 +48,13 @@
             </div>
             <button type="button" class="btn btn-secondary" onclick="addSinodal()">Agregar Sinodal</button>
             <br><br>
+            <div class="mb-3">
+                <label for="pdf_file" class="form-label">PDF con los datos del Director</label>
+                <input type="file" class="form-control" id="pdf_file" name="pdf_file" required>
+                <div class="invalid-feedback">
+                    Por favor, suba el archivo PDF actualizado.
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Guardar Sinodales</button>
         </form>
     </div>

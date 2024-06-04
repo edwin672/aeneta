@@ -42,10 +42,14 @@ Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/agregarSinodal',[AdminController::class, 'agregarSinodal'])->name('admin.agregarSinodal');
 Route::post('/admin/addSinodales', [AdminController::class, 'addSinodales'])->name('admin.addSinodales');
 
+Route::get('/admin/agregarDirector',[AdminController::class, 'agregarDirector'])->name('admin.agregarDirector');
+Route::post('/admin/addDirector', [AdminController::class, 'addDirector'])->name('admin.addDirector');
+
 Route::get('/admin/ttDetails/{id}', [AdminController::class, 'ttDetails'])->name('admin.ttDetails');
 
 Route::get('/estudiante', [EstudianteController::class, 'index'])->name('estudiante.index');
 
 Route::get('/consultarTrabajos', [EstudianteController::class, 'consultarTrabajos'])->name('estudiante.consultarTrabajos');
+Route::get('/consultarHistorial', [EstudianteController::class, 'consultarHistorial'])->name('estudiante.consultarHistorial');
 
 require __DIR__ . '/auth.php';

@@ -26,4 +26,14 @@ class EstudianteController extends Controller
             ->get();
         return view('trabajo.consultarTrabajos', ['trabajos' => $trabajos]);
     }
+    //consultar el historial
+    public function consultarHistorial()
+    {
+        $id_Estudiante = "2022100001";
+        $historial = DB::table('historial')
+            ->join('estudiante', 'trabajoacademico.id_trabajoAcademico', '=', 'estudiante.id_trabajoAcademico')
+            ->where('estudiante.id_estudiante', $id_Estudiante)
+            ->get();
+        return view('trabajo.consultarHistorial', ['historial' => $historial]);
+    }
 }

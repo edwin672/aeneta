@@ -40,6 +40,7 @@
             </tbody>
         </table>
         <a href="{{ route('estudiante.index') }}" class="btn btn-primary">Volver a Panel de Estudiante</a>
+        <a href="{{ route('estudiante.index') }}" class="btn btn-primary">Ver historial del trabajo </a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>

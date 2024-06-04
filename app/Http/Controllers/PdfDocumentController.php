@@ -132,6 +132,13 @@ class PdfDocumentController extends Controller
             ->where('id_estudiante', $participante)
             ->update(['id_trabajoAcademico' => $trabajoId]);
         }
-        return redirect()->back()->with('success', 'PDF subido correctamente.');
+        //agregar el trabajo a la tabla historial
+        DB::table('historial')->insert([
+            'id_trabajoAcademico' => $trabajoId,
+            'num_version' => '1',
+            'estatus' => 'En proceso de registro',
+            'contenido' => $pdfContent,
+        ]);
+        return redirect()->back()->with('success', 'Solicitud subida con exito.');
     }
 }
